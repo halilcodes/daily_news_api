@@ -1,6 +1,5 @@
 import requests
 import keys
-from pprint import pprint
 import smtplib
 import os
 import ssl
@@ -11,7 +10,7 @@ host = "smtp.gmail.com"
 port = 465
 context = ssl.create_default_context()
 
-topic = "tesla"
+topic = "bitcoin"
 url = f"https://newsapi.org/v2/everything?" \
       f"q={topic}&" \
       f"language=en&" \
@@ -32,8 +31,6 @@ for article in content['articles'][:20]:
             message += title + "\n" + description + "\n" + news_link + "\n"*2
 
 
-pprint(content)
-# print(message.count("\n"))
 message = message.encode("utf-8")
 
 if __name__ == "__main__":
